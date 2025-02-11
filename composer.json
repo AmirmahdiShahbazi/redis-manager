@@ -1,0 +1,23 @@
+{
+    "name": "shahbazi/redis-manager",
+    "version": "dev-main",
+    "autoload": {
+        "psr-4": {
+            "Shahbazi\\RedisManager\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "shahbazi",
+            "email": "amirmahdishahbazi1382@gmail.com"
+        }
+    ],
+    "require": {},
+    "extra": {
+        "laravel": {
+          "providers": [
+            "Shahbazi\\RedisManager\\RedisManagerServicePorvider"
+          ]
+        }
+    }
+}
