@@ -66,7 +66,7 @@
                         
                         <td>{{$type}}</td>
                         <td>    
-                               {{Illuminate\Support\Facades\Redis::ttl($key) ? 'No expiration set' : (($ttl === -2) ? 'Key does not exist' : "{$ttl} seconds")}}  
+                            {{($ttl = Illuminate\Support\Facades\Redis::ttl($key)) == -1 ? 'No expiration set' :  "{$ttl} seconds"}}  
                         </td>                          
                         <td>
                         <svg data-bs-toggle="modal" data-bs-target="#deleteModal{{$counter}}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17px" height="17px" viewBox="0 -0.5 21 21" version="1.1">
