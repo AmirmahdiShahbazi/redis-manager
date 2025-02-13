@@ -13,17 +13,17 @@ class RedisPageController extends Controller{
     const REDIS_HASH = 5;
 
     public function managePage(){
-        Redis::flushdb();
-        Redis::lpush('queue', 'job1', 'job2', 'job3');
-        Redis::lpush('queue2', 'job1', 'job2', 'job3');
-        Redis::lpush('queue3', 'job1', 'job2', 'job3');
+        // Redis::flushdb();
+        // Redis::lpush('queue', 'job1', 'job2', 'job3');
+        // Redis::lpush('queue2', 'job1', 'job2', 'job3');
+        // Redis::lpush('queue3', 'job1', 'job2', 'job3');
 
         $data = $this->getAllRedisData();
         return view('redis-manager::manage', compact('data'));
     }
 
 
-    function getAllRedisData()
+    private function getAllRedisData()
     {
         $keys = Redis::keys('*');
         $data = [];
@@ -55,5 +55,11 @@ class RedisPageController extends Controller{
         }
     
         return $data;
+    }
+
+    public function delete()
+    {
+        Redis::del(request('key'));
+        return redirect()->back();
     }
 }
